@@ -1,0 +1,52 @@
+<div class="template-form">
+  <h1>Template Driven Form</h1>
+  <form #profileForm="ngForm" (ngSubmit)="onSubmit()" appPasswordValidator>
+    <div class="form-group">
+      <label for="username">Username: </label>
+      <input
+        type="text"
+        name="username"
+        #username="ngModel"
+        class="form-control"
+        [(ngModel)]="user.name"
+        appForbiddenName="admin"
+        required
+      />
+      <div *ngIf="username.touched && username.errors?.forbiddenName" class="alert error">
+        Entered name is forbidden
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password"> Password: </label>
+
+      <input
+        type="password"
+        name="password"
+        #password="ngModel"
+        class="form-control"
+        [(ngModel)]="user.password"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword"> Confirm password </label>
+
+      <input
+        type="password"
+        name="confirmPassword"
+        #confirmPassword="ngModel"
+        class="form-control"
+        [(ngModel)]="user.confirmPassword"
+        required
+      />
+    </div>
+
+    <div *ngIf="profileForm.errors?.misMatch" class="alert error">
+      Password must match
+    </div>
+
+    <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+  </form>
+  <pre>{{ profileForm.value | json }}</pre>
+  <pre> isValid: {{ profileForm.valid | json }}</pre>
+</div>

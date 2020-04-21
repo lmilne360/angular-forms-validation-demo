@@ -1,0 +1,46 @@
+<div class="reactive-form">
+  <h1>Reactive Form</h1>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username: </label>
+
+      <input
+        type="text"
+        name="username"
+        formControlName="username"
+        class="form-control"
+      />
+      <div *ngIf="profileForm.errors?.misMatch" class="alert error">
+        Password must match
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password"> Password: </label>
+      <input
+        type="password"
+        name="password"
+        formControlName="password"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="confirmPassword"> Confirm password </label>
+
+      <input
+        type="password"
+        name="confirmPassword"
+        formControlName="confirmPassword"
+        class="form-control"
+      />
+      <div *ngIf="this.profileForm.errors?.misMatch" class="alert error">
+        Password must match
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="profileForm.invalid">Submit</button>
+  </form>
+  <pre>{{ profileForm.value | json }}</pre>
+  <pre> Is Valid: {{ profileForm.valid | json }}</pre>
+</div>

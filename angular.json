@@ -123,6 +123,46 @@
           }
         }
       }
+    },
+    "template-driven-form": {
+      "projectType": "library",
+      "root": "projects/template-driven-form",
+      "sourceRoot": "projects/template-driven-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/template-driven-form/tsconfig.lib.json",
+            "project": "projects/template-driven-form/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/template-driven-form/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/template-driven-form/src/test.ts",
+            "tsConfig": "projects/template-driven-form/tsconfig.spec.json",
+            "karmaConfig": "projects/template-driven-form/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/template-driven-form/tsconfig.lib.json",
+              "projects/template-driven-form/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "form-validation"
 }
