@@ -9,6 +9,7 @@
         #username="ngModel"
         class="form-control"
         [(ngModel)]="user.name"
+        [ngModelOptions]="{updateOn: 'blur'}"
         appForbiddenName = "potato"
         required
       />
