@@ -13,7 +13,7 @@ export class ReactiveFormComponent  {
   constructor(private fb: FormBuilder) { }
 
   profileForm = this.fb.group({
-    username: ['', [Validators.required, forbiddenNameValidator]],
+    username: ['', [Validators.required, forbiddenNameValidator(/admin/i)]],
     password: ['', Validators.required],
     confirmPassword: ['', Validators.required]
   }, {validators: passwordValidator, updateOn: "blur"})

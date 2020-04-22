@@ -10,8 +10,8 @@
         formControlName="username"
         class="form-control"
       />
-      <div *ngIf="profileForm.errors?.misMatch" class="alert error">
-        Password must match
+      <div *ngIf="profileForm.controls?.username?.errors?.forbiddenName" class="alert error">
+        This name is forbidden
       </div>
     </div>
 
@@ -42,5 +42,5 @@
     <button type="submit" [disabled]="profileForm.invalid">Submit</button>
   </form>
   <pre>{{ profileForm.value | json }}</pre>
-  <pre> Is Valid: {{ profileForm.valid | json }}</pre>
+  <pre> isValid: {{ profileForm.valid | json }}</pre>
 </div>

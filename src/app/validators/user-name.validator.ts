@@ -5,21 +5,21 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
  * @param control the formControl that the validator is attached to
  */
 
-export const forbiddenNameValidator = (control: AbstractControl): {[key: string]: any} | null  => {
- const forbidden = /admin/.test(control.value);
+// export const forbiddenNameValidator = (control: AbstractControl): {[key: string]: any} | null  => {
+//  const forbidden = /admin/.test(control.value);
 
- return forbidden ? {'forbiddenName': {value: control.value}} : null;
+//  return forbidden ? {'forbiddenName': {value: control.value}} : null;
 
-}
+// }
 
 /**
  * A validator function factory that accepts a Regex  parameter
- * @param forbiddenName regex expression to use to compare value to
+ * @param forbiddenName regex expression to use to compare value to. Defaults to /admin/
  */
 
-export const forbiddenNameValidator2 = (forbiddenName: RegExp): ValidatorFn  => {
+export const forbiddenNameValidator = (forbiddenName: RegExp ): ValidatorFn  => {
   return (control: AbstractControl): {[key: string]: any} | null  => {
-    const forbidden = forbiddenName.test(control.value);
+    const forbidden =  forbiddenName.test(control.value);
 
     return forbidden ? {'forbiddenName': {value: control.value}} : null;
 

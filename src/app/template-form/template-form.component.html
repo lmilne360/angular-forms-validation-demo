@@ -9,7 +9,7 @@
         #username="ngModel"
         class="form-control"
         [(ngModel)]="user.name"
-        appForbiddenName="admin"
+        appForbiddenName = "potato"
         required
       />
       <div *ngIf="username.touched && username.errors?.forbiddenName" class="alert error">

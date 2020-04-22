@@ -1,7 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator } from '@angular/forms';
-import { forbiddenNameValidator2 } from '../validators';
-import { forbiddenNameValidator } from '../validators/user-name.validator';
+import { forbiddenNameValidator } from '../validators';
 
 /**
  * form control validation directive
@@ -38,6 +37,6 @@ export class UsernameValidatorDirective implements Validator {
   @Input('appForbiddenName') name: string;
 
  validate(control: AbstractControl): ValidationErrors | null  {
-  return name ? forbiddenNameValidator2(new RegExp(name))(control) : forbiddenNameValidator(control);
+  return  forbiddenNameValidator(new RegExp(this.name))(control)
  }
 }
